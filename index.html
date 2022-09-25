@@ -8,12 +8,26 @@
 </head>
 
 <body>
-    <header>
+    <div class="container">
+        <div class="question-card" class="hidden">
+            <div class="questions">Questions</div>  
+            <div class="answers">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
 
-    </header>
-    <nav>
+            </div>
+        </div>
+    </div>
 
-    </nav>
-    
+    <div class="btn-control">
+        <button id="start-btn btn">Start Game</button>
+        <!--  hide 'Next Question' button when page loads/before start of game  -->
+        <button class="hidden" id="next-btn btn">Next Question</button>
+    </div>
+
+
+<script src="./Assets/javascript/script.js"></script>
 </body>
 </html>
