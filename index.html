@@ -11,22 +11,24 @@
 <body>
     <!--  Questions Card  -->
     <div class="container">
-        <div class="question-card" class="hidden">
+        <div class="question-card hidden">
             <div class="questions">Questions</div>  
-            <div class="answers">
+            <div class="answer-grid">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
                 <button class="btn">Answer 3</button>
                 <button class="btn">Answer 4</button>
             </div>
         </div>
+        <br>
+        <!--  Start game and next question button  -->
+        <div class="btn-control">
+            <button class="btn" id="start-btn">Start Game</button>
+            <!--  hide 'Next Question' button when page loads/before start of game  -->
+            <button class="btn hidden" id="next-btn">Next Question</button>
+        </div>
     </div>
-<!--  Start game and next question button  -->
-    <div class="btn-control">
-        <button id="start-btn btn">Start Game</button>
-        <!--  hide 'Next Question' button when page loads/before start of game  -->
-        <button class="hidden" id="next-btn btn">Next Question</button>
-    </div>
+
 
 
 <script src="./Assets/javascript/script.js"></script>
