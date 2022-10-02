@@ -42,10 +42,6 @@ body {
     box-shadow: 0 0 30px 5px var(--colorIncorrect);
 }
 
-/* .question-card {
-
-} */
-
 .answer-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -81,12 +77,11 @@ body {
     justify-content: center;
 }
 
-.questions {
-
-    font-weight: bold;
-    font-size:xx-large;
-}
-
 .hidden {
     display: none;
+}
+
+#question {
+    font-weight: bold;
+    font-size:xx-large;
 }
