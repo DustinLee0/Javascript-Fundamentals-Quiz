@@ -1,18 +1,18 @@
 const startBtn = document.getElementById('start-btn')
 const questionCard = document.getElementById('question-card')
-let randomQuestion
-let questionIndex
 const questionElement = document.getElementById('question')
 const answerBtnElement = document.getElementById('answer-grid')
+let randomQuestion
+let questionIndex
 
-const questions =[
+const questions = [
     {
         question: 'How do you comment in Javascript?',
         answers: [
             {text: '/* This is Javascript comment */', answer: false},
             {text: '// This is a Javascript comment', answer: true},
-            {text: '<!-- This is a Javascript comment -->', answer: false },
-            {text: '\\ This is a Javascript comment', answer: false}
+            {text: '<!--This is a Javascript comment-->', answer: false},
+            {text: '|| This is a Javascript comment', answer: false}
         ]
     },
     {
@@ -57,8 +57,9 @@ startBtn.addEventListener('click', startQuiz)
 
 function startQuiz() {
     startBtn.classList.add('hidden')
+    //sort() will sort based on negative/positive numbers
     randomQuestion = questions.sort(() => Math.random() - 0.5)
-    questionIndex = 0
+    questionIndex = 0       //set at 0 to start at first question in array
     questionCard.classList.remove('hidden')
     nextQuestion()
 }
@@ -66,19 +67,23 @@ function startQuiz() {
 // grabs from a random array to show next question 
 function nextQuestion() {
     showQuestion(randomQuestion[questionIndex])
-    question.answers.forEach(answers => {
-        const createButton = document.createElement('button')
-        createButton.innerHTML = answers.text
-        createButton.classList.add('btn')
-        
-    })
 }
 
 // changes question on current page to next question when called 
 function showQuestion(question) {
     questionElement.innerHTML = question.question
+    question.answers.forEach(answers => {
+        const createButton = document.createElement('button')
+        createButton.innerHTML = answers.text
+        createButton.classList.add('btn')
+        if (answers.correct) {
+            createButton.dataset.correct = answers.correct
+        }
+        createButton.addEventListener('click', userAnswer)
+        answerBtnElement.appendChild(createButton)
+    })
 }
 
-function userAnswer() {
+function userAnswer(e) {
 
 }
