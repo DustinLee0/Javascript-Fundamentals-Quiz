@@ -31,17 +31,17 @@ body {
     box-shadow: 0 0 30px 5px var(--colorDefault);
 }
 
-.container.correct{
+/* .container.correct{
     box-shadow: 0 0 30px 5px var(--colorCorrect);
 }
 
 .container.incorrect{
     box-shadow: 0 0 30px 5px var(--colorIncorrect);
-}
+} */
 
 .answer-grid {
     display: grid;
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(2, 55%);
     gap: 10px;
     margin: 30px 20px;
     max-width: fit-content;
@@ -54,7 +54,10 @@ body {
     padding: 10px;
     font-weight: 900;
     font-size: 17px;
-    max-width: 100%;
+    width: 300px auto;
+    max-width: 80%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .btn:hover {

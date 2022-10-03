@@ -3,12 +3,18 @@ const nextBtn = document.getElementById('next-btn')
 const questionCard = document.getElementById('question-card')
 const questionElement = document.getElementById('question')
 const answerBtnElement = document.getElementById('answer-box')
+const containerElement = document.getElementById('container')
 let randomQuestion
 let questionIndex
 
 
 
 startBtn.addEventListener('click', startQuiz)
+//next button needs to +1 to next item in array and show question
+nextBtn.addEventListener('click', () => {
+    questionIndex++
+    nextQuestion()
+})
 
 function startQuiz() {
     startBtn.classList.add('hidden')
@@ -25,6 +31,7 @@ function nextQuestion() {
     showQuestion(randomQuestion[questionIndex])
 }
 
+//resets question card by removing preview answers
 function resetCard() {
     nextBtn.classList.add('hidden')
     while (answerBtnElement.firstChild) {
@@ -54,7 +61,13 @@ function userAnswer(e) {
         Array.from(answerBtnElement.children).forEach(button => {
             datasetStatus(button, button.dataset.correct)
         })
-    
+        //checks if there are more questions in object array
+        if (randomQuestion.length > questionIndex + 1) {
+            nextBtn.classList.remove('hidden')
+        } else {
+            startBtn.innerHTML = 'Restart'
+            startBtn.classList.remove('hidden')
+        }
 }
 
 function datasetStatus(element, correct) {
@@ -66,50 +79,55 @@ function datasetStatus(element, correct) {
     }
 }
 
+function clearStatus(element) {
+    element.classList.remove('correct')
+    element.classList.remove('incorrect')
+  }
+
 const questions = [
     {
         question: 'How do you comment in Javascript?',
         answers: [
-            {text: '/* This is Javascript comment */', answer: false},
-            {text: '// This is a Javascript comment', answer: true},
-            {text: "<--This is a Javascript comment-->", answer: false},
-            {text: '|| This is a Javascript comment', answer: false}
+            {text: '/* This is Javascript comment */', correct: false},
+            {text: '// This is a Javascript comment', correct: true},
+            {text: "<--This is a Javascript comment-->", correct: false},
+            {text: '|| This is a Javascript comment', correct: false}
         ]
     },
     {
         question: 'What is the correct syntax for naming variable in Javascript?',
         answers: [
-            {text: 'PascalCase: ThisIsTheCorrectSyntax', answer: false},
-            {text: 'kebab-case: This-is-the-correct-syntax', answer: false},
-            {text: 'camelCase: thisIsTheCorrectSyntax', answer: true},
-            {text: 'snake_case: This_is_the_correct_syntax', answer: false}
+            {text: 'PascalCase: ThisIsTheCorrectSyntax', correct: false},
+            {text: 'kebab-case: This-is-the-correct-syntax', correct: false},
+            {text: 'camelCase: thisIsTheCorrectSyntax', correct: true},
+            {text: 'snake_case: This_is_the_correct_syntax', correct: false}
         ]
     },
     {
         question: 'How do you call a function named "randomNumber"?',
         answers: [
-            {text: 'randomNumber()', answer: true},
-            {text: 'function randomNumber()', answer: false},
-            {text: 'call randomNumber()', answer: false},
-            {text: 'randomNumber', answer: false}
+            {text: 'randomNumber()', correct: true},
+            {text: 'function randomNumber()', correct: false},
+            {text: 'call randomNumber()', correct: false},
+            {text: 'randomNumber', correct: false}
         ]
     },
     {
         question: 'What is the correct syntax to write an array in Javascript?',
         answers: [
-            {text: 'var ingredients = {"flour", "eggs", "bananas", "butter"}', answer: false},
-            {text: 'var ingredients = ("flour", "eggs", "bananas", "butter")', answer: false},
-            {text: 'var ingredients = {flour, eggs, bananas, butter}', answer: false},
-            {text: 'var ingredients = ["flour", "eggs", "bananas", "butter"]', answer: true}
+            {text: 'var ingredients = {"flour", "eggs", "bananas", "butter"}', correct: false},
+            {text: 'var ingredients = ("flour", "eggs", "bananas", "butter")', correct: false},
+            {text: 'var ingredients = {flour, eggs, bananas, butter}', correct: false},
+            {text: 'var ingredients = ["flour", "eggs", "bananas", "butter"]', correct: true}
         ]
     },
     {
-        question:'Which of the following is correct to grab a this div element: "<div id="button">Hello World</div>"?',
+        question:'Which of the following is correct to grab a div element with the id = button?',
         answers: [
-            {text: 'document.getElementById("button")', answer: true},
-            {text: 'document.querySelector(".button")', answer: false},
-            {text: 'document.querySelector("#button")', answer: false},
-            {text: 'document.getElementById("#button")', answer: false}
+            {text: 'document.getElementById("button")', correct: true},
+            {text: 'document.querySelector(".button")', correct: false},
+            {text: 'document.querySelector("#button")', correct: false},
+            {text: 'document.getElementById("#button")', correct: false}
         ]
     }
 ]
