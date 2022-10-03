@@ -29,9 +29,6 @@ body {
     background-color: rgba(6, 32, 199, 0.816);
     border-radius: 10%;
     box-shadow: 0 0 30px 5px var(--colorDefault);
-    /* display: block;
-    justify-content: space-evenly;
-    align-items: center; */
 }
 
 .container.correct{
@@ -46,7 +43,8 @@ body {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
-    margin: 10px 0;
+    margin: 30px 20px;
+    max-width: fit-content;
 }
 
 .btn {
@@ -55,7 +53,8 @@ body {
     border-radius: 10px;
     padding: 10px;
     font-weight: 900;
-    font-size: medium;
+    font-size: 17px;
+    max-width: 100%;
 }
 
 .btn:hover {
@@ -83,5 +82,5 @@ body {
 
 #question {
     font-weight: bold;
-    font-size:xx-large;
+    font-size: 28px;
 }
