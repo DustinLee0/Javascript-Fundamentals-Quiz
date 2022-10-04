@@ -4,6 +4,7 @@ const questionCard = document.getElementById('question-card')
 const questionElement = document.getElementById('question')
 const answerBtnElement = document.getElementById('answer-box')
 const containerElement = document.getElementById('container')
+const timeEl = document.querySelector('.time')
 let randomQuestion
 let questionIndex
 
@@ -23,7 +24,18 @@ function startQuiz() {
     questionIndex = 0       //set at 0 to start at first question in array
     questionCard.classList.remove('hidden')
     nextQuestion()
-}
+
+    var timer = 5
+    var timerInterval = setInterval (function() {
+        if (timer > 0) {
+        timeEl.innerHTML = 'Quiz timer: ' + timer + ' seconds remaining'
+        timer--;
+    } else {
+        timeEl.classList.add('hidden')
+        clearInterval(timerInterval)
+        //create game over function 
+    }}, 1000)
+    }
 
 // grabs from a random array to show next question 
 function nextQuestion() {
@@ -58,16 +70,22 @@ function userAnswer(e) {
     const answerChoice = e.target
     const correct = answerChoice.dataset.correct
     datasetStatus(document.body, correct) 
-        Array.from(answerBtnElement.children).forEach(button => {
-            datasetStatus(button, button.dataset.correct)
-        })
+    Array.from(answerBtnElement.children).forEach(button => {
+        datasetStatus(button, button.dataset.correct)
+    })
         //checks if there are more questions in object array
-        if (randomQuestion.length > questionIndex + 1) {
-            nextBtn.classList.remove('hidden')
-        } else {
-            startBtn.innerHTML = 'Restart'
-            startBtn.classList.remove('hidden')
-        }
+    if (randomQuestion.length > questionIndex + 1) {
+        nextBtn.classList.remove('hidden')
+    } else {
+        // highscoreSave()
+        startBtn.innerHTML = 'Restart'
+        startBtn.classList.remove('hidden')
+
+    }
+}
+
+function highscoreSave() {
+
 }
 
 function datasetStatus(element, correct) {
