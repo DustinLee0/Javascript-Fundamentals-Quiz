@@ -21,5 +21,7 @@ WHEN the game is over,
 THEN I can save my initials and my score
 
 
+This is the deployed website: https://dustinlee0.github.io/Javascript-Fundamentals-Quiz/
+
 This is a screenshot of the start page of the quiz.
 ![screenshot of quiz](Assets/javascript-quiz.png)
