@@ -1,6 +1,6 @@
 ## Javascript Fundamentals Quiz
 
-lkasjdhf
+This is a simple Javasript Fundamentals Quiz made using HTML, CSS and Javascript. The quiz has five questions and every question you get correct will add one to your total score. At the end of the quiz, you will be able to save your initials with your score locally. If the timer gets to zero before the quiz is finished, the screen will show a game is over screen asking to save highscore. 
 
 # User Story
 As A coding bootcamp student,
@@ -19,3 +19,7 @@ WHEN all questions are answered or the timer reaches 0,
 THEN the game is over
 WHEN the game is over,
 THEN I can save my initials and my score
+
+
+This is a screenshot of the start page of the quiz.
+![screenshot of quiz](Assets/javascript-quiz.png)
