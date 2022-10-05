@@ -1,13 +1,18 @@
 const startBtn = document.getElementById('start-btn')
 const nextBtn = document.getElementById('next-btn')
 const questionCard = document.getElementById('question-card')
-const questionElement = document.getElementById('question')
+const questionElement = document.querySelector('#question')
 const answerBtnElement = document.getElementById('answer-box')
 const containerElement = document.getElementById('container')
+const buttonControl = document.querySelector('.btn-control')
 const timeEl = document.querySelector('.time')
+var pElement = document.createElement('p')
+var inputElement = document.createElement('input')
+var buttonElement = document.createElement('button')
+
 let randomQuestion
 let questionIndex
-
+let userScore = 0
 
 
 startBtn.addEventListener('click', startQuiz)
@@ -25,16 +30,33 @@ function startQuiz() {
     questionCard.classList.remove('hidden')
     nextQuestion()
 
-    var timer = 5
+    var timer = 2
     var timerInterval = setInterval (function() {
-        if (timer > 0) {
+        if (timer >= 1) {
         timeEl.innerHTML = 'Quiz timer: ' + timer + ' seconds remaining'
         timer--;
     } else {
-        timeEl.classList.add('hidden')
+        // game over screen when timer hits 0
+        timeEl.innerHTML = ''
         clearInterval(timerInterval)
-        //create game over function 
+        gameOver()
+  
     }}, 1000)
+    }
+
+    function gameOver() {
+        answerBtnElement.classList.add('hidden')
+        questionElement.classList.add('hidden')
+        inputElement.setAttribute('placeholder', 'Initials')
+        buttonElement.setAttribute('id', 'highscore-input')
+        buttonElement.classList.add('input-btn')
+        buttonElement.textContent = 'Submit'
+        pElement.textContent = 'Game over. Please enter your initials to save your score'
+        questionCard.appendChild(pElement)
+        questionCard.appendChild(inputElement)
+        questionCard.appendChild(buttonElement)
+        console.log('game over')
+
     }
 
 // grabs from a random array to show next question 
@@ -78,25 +100,33 @@ function userAnswer(e) {
         nextBtn.classList.remove('hidden')
     } else {
         // highscoreSave()
-        startBtn.innerHTML = 'Restart'
-        startBtn.classList.remove('hidden')
-
+        const restartButton = document.createButton('Restart')
+        restartButton.classList.add('btn')
+        buttonControl.appendChild(restartButton)
     }
 }
 
-function highscoreSave() {
-
+function highscoreSave(score) {
+    let highscore = {
+        name: inputElement.value
+        score: userScore.value
+    }
+    localStorage.setItem('Highscore', highscore)
 }
 
+// add correct class to show correct choice 
+// add to score if correct
 function datasetStatus(element, correct) {
     clearStatus(element)
     if (correct) {
         element.classList.add('correct')
+        userScore++
     } else {
         element.classList.add('incorrect')
     }
 }
 
+// removes status of elements after each choice
 function clearStatus(element) {
     element.classList.remove('correct')
     element.classList.remove('incorrect')

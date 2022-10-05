@@ -23,7 +23,7 @@ body {
 .container {
     padding: 25px;
     color: white;
-    height: 50%;
+    height: fit-content;
     width: 700px;
     max-width: 80%;
     background-color: rgba(6, 32, 199, 0.816);
@@ -45,6 +45,13 @@ body {
     gap: 10px;
     margin: 30px 20px;
     max-width: fit-content;
+}
+
+.input-btn {
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    margin-left: 20px;
 }
 
 .btn {
@@ -81,6 +88,19 @@ body {
 
 .hidden {
     display: none;
+}
+
+.time {
+    height: fit-content;
+    width:max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    background-color: white;
+    color: black;
+    margin: 10px 200px;
+    font-weight: 700;
 }
 
 #question {
